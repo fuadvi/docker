@@ -1,0 +1,11 @@
+FROM golang:1.21-alpine
+
+WORKDIR /app
+
+RUN go mod init example.com/my-golang-app && go get -u github.com/redis/go-redis/v9
+
+COPY main.go main.go
+
+EXPOSE 8080
+
+CMD [ "go", "run", "main.go" ]

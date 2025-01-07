@@ -1,0 +1,9 @@
+FROM golang:1.21-alpine
+
+WORKDIR /app
+
+COPY main.go main.go
+
+RUN go mod init example.com/gorilla && go get -u github.com/gorilla/mux
+
+CMD [ "go", "run", "main.go" ]
